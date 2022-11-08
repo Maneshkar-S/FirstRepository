@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Maven Deploy'){
             steps{
-                echo "Deploying the jar file into server"
+                echo "Deploying the jar file into server..."
             }
         }
     }
