@@ -18,7 +18,7 @@ pipeline{
         }
         stage('Create Docker Image'){
             steps{
-                sh 'docker build -t product:latest .'
+                sh 'sudo docker build -t product:latest .'
             }
         }
         stage('Maven Deploy'){
