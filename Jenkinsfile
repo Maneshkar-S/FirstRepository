@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Git Clone'){
             steps{
-                git 'https://github.com/Maneshkar-S/FirstRepository.git'
+                git 'git branch: "deploybranch", url: "https://github.com/Maneshkar-S/FirstRepository.git"'
             }
         }
         stage('Maven Test'){
@@ -18,12 +18,17 @@ pipeline{
         }
         stage('Create Docker Image'){
             steps{
-                sh 'echo "password" | sudo -S docker build -t product:latest .'
+                sh 'rm -rf dockerimages'
+                sh 'mkdir dockerimages'
+                sh 'cd dockerimages'
+                sh 'cp /var/jenkins_home/workspace/Package_Job/target/product-0.0.1-SNAPSHOT.war .'
+                sh 'echo "password" | sudo -S docker build -t tomcatwebserver:1.0 .'
             }
         }
-        stage('Maven Deploy'){
+        stage('Deploy Docker Image'){
             steps{
-                echo "Deploying the jar file into server..."
+                echo "Deploying the war file into server..."
+                sh 'sudo docker run -itd --name tomcatwebserver -p 8888:8080 tomcatwebserver:1.0'
             }
         }
     }
