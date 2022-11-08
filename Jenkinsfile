@@ -16,6 +16,11 @@ pipeline{
                 sh 'mvn package'
             }
         }
+        stage('Create Docker Image'){
+            steps{
+                sh 'docker build -t FirstRepository/product:latest .'
+            }
+        }
         stage('Maven Deploy'){
             steps{
                 echo "Deploying the jar file into server"
