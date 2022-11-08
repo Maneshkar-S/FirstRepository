@@ -18,7 +18,7 @@ pipeline{
         }
         stage('Create Docker Image'){
             steps{
-                echo "password" | sh 'sudo -S docker build -t product:latest .'
+                sh 'echo "password" | sudo -S docker build -t product:latest .'
             }
         }
         stage('Maven Deploy'){
