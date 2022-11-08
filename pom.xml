@@ -10,6 +10,7 @@
 	<groupId>com.shoping</groupId>
 	<artifactId>product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>product</name>
 	<description>Product Microservice</description>
 	<properties>
