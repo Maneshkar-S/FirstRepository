@@ -18,10 +18,10 @@ pipeline{
         }
         stage('Create Docker Image'){
             steps{
-                sh 'rm -rf dockerimages'
-                sh 'mkdir dockerimages'
-                sh 'cd dockerimages'
-                sh 'cp /var/jenkins_home/workspace/MultiBranch_Pipeline_Job_feature/target/product-0.0.1-SNAPSHOT.war .'
+                rm -rf dockerimages
+                mkdir dockerimages
+                cd dockerimages
+                cp /var/jenkins_home/workspace/MultiBranch_Pipeline_Job_feature/target/product-0.0.1-SNAPSHOT.war .
                 sh 'echo "password" | sudo -S docker build -t tomcatwebserver:1.0 .'
             }
         }
