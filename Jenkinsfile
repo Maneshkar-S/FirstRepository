@@ -18,9 +18,9 @@ pipeline{
         }
         stage('Create Docker Image'){
             steps{
-                sh 'echo "password" | sudo -S sudo docker stop tomcatwebserver'
-                sh 'echo "password" | sudo -S sudo docker rm tomcatwebserver'
-                sh 'echo "password" | sudo -S sudo docker rmi tomcatwebserver:1.0'
+                sh 'echo "password" | sudo -S sudo docker stop tomcatwebserver || true'
+                sh 'echo "password" | sudo -S sudo docker rm -f tomcatwebserver  || true'
+                sh 'echo "password" | sudo -S sudo docker rmi -f tomcatwebserver:1.0 || true'
                 sh 'rm -rf dockerimages'
                 sh 'mkdir dockerimages'
                 sh 'cd dockerimages'
