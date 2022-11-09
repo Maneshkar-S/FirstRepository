@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Git Clone'){
             steps{
-                git 'git branch: "deploybranch", url: "https://github.com/Maneshkar-S/FirstRepository.git"'
+                git 'https://github.com/Maneshkar-S/FirstRepository.git'
             }
         }
         stage('Maven Test'){
