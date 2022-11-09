@@ -28,7 +28,7 @@ pipeline{
         stage('Deploy Docker Image'){
             steps{
                 echo "Deploying the war file into server..."
-                sh 'echo "password" | sudo docker run -itd --name tomcatwebserver -p 8888:8080 tomcatwebserver:1.0'
+                sh 'echo "password" | sudo -S docker run -itd --name tomcatwebserver -p 8888:8080 tomcatwebserver:1.0'
             }
         }
     }
